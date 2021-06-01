@@ -1,0 +1,12 @@
+name = "ThreadedScansTests"
+uuid = "7ec95962-34a4-42ed-99a6-872b255397a0"
+authors = ["Takafumi Arakaki <aka.tkf@gmail.com> and contributors"]
+version = "0.1.0"
+
+[deps]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+ThreadedScans = "24d252fe-5d94-4a69-83ea-56a14333d47a"
+ThreadedScansBenchmarks = "9d4e69ce-ab08-41b0-abf7-c5484e6143ec"
+
+[compat]
+julia = "1"
