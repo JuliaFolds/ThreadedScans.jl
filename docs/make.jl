@@ -8,5 +8,6 @@ makedocs(
 )
 
 deploydocs(
-    repo = "https://github.com/JuliaFolds/ThreadedScans.jl"
+    repo = "github.com/JuliaFolds/ThreadedScans.jl",
+    push_preview = true,
 )
