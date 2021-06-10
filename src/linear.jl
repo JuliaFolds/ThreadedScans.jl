@@ -1,3 +1,12 @@
+"""
+    ThreadedScans.linear!(op, xs::AbstractVector) -> xs
+
+Compute inclusive scan. Spawn, wait, and propagation of intermediate reductions
+are all done sequentially.
+
+# Keyword arguments
+* `ntasks = Threads.nthreads()`: number of tasks
+"""
 function ThreadedScans.linear!(
     op,
     xs;
