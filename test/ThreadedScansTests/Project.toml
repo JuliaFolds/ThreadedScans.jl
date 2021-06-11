@@ -4,6 +4,7 @@ authors = ["Takafumi Arakaki <aka.tkf@gmail.com> and contributors"]
 version = "0.1.0"
 
 [deps]
+Aqua = "4c88cf16-eb10-579e-8560-4a9242c79595"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 ThreadedScans = "24d252fe-5d94-4a69-83ea-56a14333d47a"
 ThreadedScansBenchmarks = "9d4e69ce-ab08-41b0-abf7-c5484e6143ec"
