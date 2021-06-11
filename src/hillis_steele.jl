@@ -1,3 +1,14 @@
+"""
+    ThreadedScans.partitioned_hillis_steele!(op, xs::AbstractVector) -> xs
+
+Compute inclusive scan.  Intermediate reductions for `ntasks` chunks are
+computed in parallel and then merged using prefix sum algorithm by Hillis and
+Steele.  It is marginally better than other methods especially when the number
+of worker threads is large.
+
+# Keyword arguments
+* `ntasks = Threads.nthreads()`: number of tasks
+"""
 function ThreadedScans.partitioned_hillis_steele!(
     op,
     xs;

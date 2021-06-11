@@ -1,3 +1,13 @@
+"""
+    ThreadedScans.dac!(op, xs::AbstractVector) -> xs
+
+Compute inclusive scan. Use a divide-and-conquer strategy for spawning the
+tasks.  Intermediate reductions are propagated sequentially.  It is slightly
+better than `ThreadedScans.linear!`.
+
+# Keyword arguments
+* `ntasks = Threads.nthreads()`: number of tasks
+"""
 function ThreadedScans.dac!(
     op,
     xs;
