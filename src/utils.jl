@@ -101,26 +101,27 @@ function sync_end!(onerror, tasks, err = nothing)
     return err
 end
 
-function dac_spawn_foreach(f::F, xs; onerror = donothing) where {F}
-    function dac(xs)
-        if length(xs) == 1
-            try
-                f(xs[1])
-            catch
-                onerror()
-                rethrow()
-            end
-        else
-            l, r = halve(xs)
-            t = Threads.@spawn dac(r)
-            try
-                dac(l)
-            finally
-                wait(t)
-            end
+function _dac_spawn_foreach(f, xs, onerror)
+    if length(xs) == 1
+        try
+            f(xs[1])
+        catch
+            onerror()
+            rethrow()
+        end
+    else
+        l, r = halve(xs)
+        t = Threads.@spawn _dac_spawn_foreach(f, r, onerror)
+        try
+            _dac_spawn_foreach(f, l, onerror)
+        finally
+            wait(t)
         end
     end
-    isempty(xs) || dac(xs)
+end
+
+function dac_spawn_foreach(f::F, xs; onerror = donothing) where {F}
+    isempty(xs) || _dac_spawn_foreach(f, xs, onerror)
     return
 end
 
